@@ -22,9 +22,11 @@
     {% if common or children %}
         <div class="priority">
             {% if children %}
-                <span class="badge" v-html="index + 1"><: related.meta.relation.priority :></span>
+                <input class="input-narrow"
+                    v-model="positions[related.id]" @change="onInputPosition(related)" @keyup="onInputPosition(related)"/>
             {% else %}
-                <span class="badge"><: related.meta.relation.priority :></span>
+                <input class="input-narrow"
+                    v-model="priorities[related.id]" @change="onInputPriorities(related)" @keyup="onInputPriorities(related)"/>
             {% endif %}
         </div>
     {% endif %}
@@ -139,7 +141,7 @@
 
 
     {# CHILDREN position #}
-    {% if children %}
+    {# {% if children %}
         <div class="children-position container-grid p-05">
             <dl>
                 <dt>{{ __('Move to position') }}:</dt>
@@ -149,7 +151,7 @@
                 </dd>
             </dl>
         </div>
-    {% endif %}
+    {% endif %} #}
 
 
     {# BUTTONS #}
